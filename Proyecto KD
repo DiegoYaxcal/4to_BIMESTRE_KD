@@ -1,0 +1,43 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+  // Declarar variables
+  int filas, columnas, matriz[100][100], sumaColumnas[100], sumaMaxima = 0, columnaMaxima = 0;
+
+  // Solicitar al usuario la cantidad de filas y columnas
+  cout << "Ingrese la cantidad de filas: ";
+  cin >> filas;
+  cout << "Ingrese la cantidad de columnas: ";
+  cin >> columnas;
+
+  // Ingresar los valores de la matriz
+  for (int i = 0; i < filas; i++) {
+    for (int j = 0; j < columnas; j++) {
+      cout << "Ingrese el valor de la matriz[" << i << "][" << j << "]: ";
+      cin >> matriz[i][j];
+    }
+  }
+
+  // Sumar las columnas
+  for (int i = 0; i < columnas; i++) {
+    sumaColumnas[i] = 0;
+    for (int j = 0; j < filas; j++) {
+      sumaColumnas[i] += matriz[j][i];
+    }
+  }
+
+  // Encontrar la columna con la máxima suma
+  for (int i = 0; i < columnas; i++) {
+    if (sumaColumnas[i] > sumaMaxima) {
+      sumaMaxima = sumaColumnas[i];
+      columnaMaxima = i;
+    }
+  }
+
+  // Imprimir la columna con la máxima suma y su suma
+  cout << "La columna con la máxima suma es la columna " << columnaMaxima + 1 << " con una suma de " << sumaMaxima << endl;
+
+  return 0;
+}
